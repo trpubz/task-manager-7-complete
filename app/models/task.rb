@@ -1,12 +1,6 @@
 class Task < ApplicationRecord
-  attr_reader :title, :description
-
-  def initialize(data)
-    @title = data[:title]
-    @description = data[:description]
-  end
 
   def laundry?
-    @title == "laundry"
+    title.downcase.include?("laundry") || description.match?(/laundry/i)
   end
 end
